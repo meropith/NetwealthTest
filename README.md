@@ -1,8 +1,8 @@
 # NetwealthTest
 
-#Introduction
+# Introduction
 As part of the test submission, I am adding this document to explain some of the choices I made. The brief leaves a lot of room for making the project your own. In order to showcase some technologies, patterns and tools I may have overcomplicated a few areas but I feal strongly about the route I took. To be honest  a simple .html page with a js script that calls the free api you mentioned would have done the same job, but I approached the solution as if it was a larger project that would be extended in the future.
-#Solution breakdown.
+# Solution breakdown.
 The solution includes 4 projects. Each one has its own purpose but they are all needed to complete the product. From back to front the project are
 *	Exchange.DB
 *	A DB project tha allows the publishing of the required database. It includes 2 post deployment scripts that insert a number of default currencies and some users and their roles.
@@ -13,9 +13,9 @@ The solution includes 4 projects. Each one has its own purpose but they are all 
 *	This is the entry point to the main project. It provides endpoints for login, convert, and one to list the supported currencies. 
 *	Exchange.UI
 *	This is the user facing site. It is made in Blazor webasembly and allows a user to login and then convert any of the supported currencies to any other. 
-#Functionality Breakdown
+# Functionality Breakdown
 The UI is here to provide a number of options for converting currencies. A registered user can be subscribed to one of 3 tiers. Free, DB, API. After a user has authenticated on the site, they can access the conversion page. If they are not in the Free tier they have a selection of providers. Then they can select the source and destination currencies and the amount and get the exchange value.
-#Code rationale
+# Code rationale
 In this section I will go over some of the code in more details and explain the rationale behind some of the decisions. 
 First of all I decided to add users to the project in order to use JWT for authentication on the API. By doing so I found my self reaching for the user object multiple times and I realized it would be better to added to the context. Taking advantage of the .net middleware feature, I am adding the successfully authenticated user into the context for later use. In the interest of security I have also split the authentication db context from the data access db context as it is considered good practice. They could, and should, have different connection string but it would be too much for this. 
 To complete the authentication, I created an Auth controller to expose a login endpoint tha returns a User object along with a generated JWT. At this point I decided to add some roles, I will be referring to those as Tiers, that would allow me to expose different functionality to free and paying customers.
@@ -25,12 +25,12 @@ Next my idea was to show the service/repo approach. This resulted in the Handler
 At this point I stopped with the API development and move onto the Blazor app. I am not very familiar with Blazor but from the options given I believed it would require the least amount of code to get up and running and connect to the api for such a small project. 
 The Blazor application has 2 pages, one for login and one for the conversion. There is not much else in the project apart from some services for authentication and conversion. The authentication part was a bit complicated but with some googling and reading I manged to get it going. Here is where a lightbulb moment occurred. My initial approach was to have the user type the iso codes for the currencies he wanted to convert. This was terrible UX. I decided to add a new endpoint that would return all the supported currencies with their ISO codes and turn the 2 text boxes into drop-downs. Here is where the structure of the project helped a lot. 
 Step 1 add new endpoint to the controller. Create a new query and handler for the MediatR, get a service for the currencies going and a repo for their tables and done. Easy to follow, simple to extend. This was also helped by the fact that all Mediator handler results return the same type of ApiResponse<T> with the payload in the data generic property. 
-#Challenges, stipulations, triumphs
+# Challenges, stipulations, triumphs
 *	The UI project is completely decupled from the API project. I am using the same classes for the API response object but I have copied the classes into the UI project instead of referencing them. This is to show that the UI project could have been implemented in any front end stack without the need for it to know anything more that what was provided by the swagger doc. 
 *	Registration was temporarily implemented to allow for the creation of users. It is not active.
 *	Using EF core in the azure function was a bit tricky and it may have been a better idea to use SQL commands but it appears to work.
 *	[1] The pipeline caching, caches results from previous conversions and not the rates. To find a result in cache someone must have had the same conversion (currencies/amount) done before. This is because the idea was to show the pipeline feature not the caching feature. 
 *	The biggest challenge was to implement the authentication features in the blazor app. 
 *	Importing the rates from they apis could not be done with a model because each rate was a element in the json response so I had to use a dictionary when deserializing. 
-#Conclusion
+# Conclusion
 To sum up, there is a lot of functionality and features that can be added to the project but for the purpose of this test I believe it is more tha enough. I found the freedom allowed by the brief both refreshing and challenging. Limiting the scope of a new “project” is always a tricky situation. 
