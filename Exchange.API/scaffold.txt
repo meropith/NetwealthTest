@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "Server=RAZER-LAPTOP\SQL2019X;Database=ExchangeDB;user id=ExchangeDBUser;password=159632478A@a;MultipleActiveResultSets=true" Microsoft.EntityFrameworkCore.SqlServer -o Models/DB -t "Currencies" -t "FixerRates" -t "ExchangeRates" --context-dir DAL -c ApiDataContext -f

@@ -1,0 +1,21 @@
+﻿@page "/"
+@using Blazored.LocalStorage
+@inject ILocalStorageService localStorage
+
+<PageTitle>Index</PageTitle>
+
+<h1>Welcome to converter app.</h1>
+
+@code {
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnParametersSet();
+
+        //Log out on project start to allow for easy testing of the auth functionality.
+        //This clears stagnant tokens when the application starts.   
+        await localStorage.RemoveItemAsync("JWT Token");
+        await localStorage.RemoveItemAsync("User Details");
+    }
+}

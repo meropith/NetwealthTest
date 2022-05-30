@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [ExchangeDBUser]
+    WITH PASSWORD = N'yFt{bR,{<daf4&drGug7ClpomsFT7_&#$!~<HXs;jsjF||nf', SID = 0x7E64A78E5E0FC84DB93DE1F5DD07B187, DEFAULT_LANGUAGE = [us_english];
+

@@ -1,0 +1,132 @@
+﻿@page "/Converter"
+@using Blazored.LocalStorage
+@using Exchange.UI.Helpers
+@using Exchange.UI.Models
+@using Exchange.UI.Services
+@using Exchange.UI.VMs
+@using Microsoft.AspNetCore.Components.Authorization
+
+@inject IJSRuntime _JsRuntime
+@inject ILocalStorageService localStorage
+@inject ICurrencyService currencyService
+<h1>Converter</h1>
+  
+
+@if (hasUser)
+{
+    <EditForm Model="VM" OnValidSubmit="ConvertPost" class="bg-light">
+
+        <div class="pt-3 pb-2 px-5 mx-1 mx-md-0 bg-secondary">
+            <DataAnnotationsValidator />
+            <div class="row px-3 mx-3">
+
+                <div class=" col-4 col-md-2">
+                    <div class="form-group">
+                        <label class="text-warning">Provider</label>
+                        <select class="form-control" @bind="VM.Provider">
+                            <option value="Select" selected disabled="disabled">(Select Provider)</option>
+                            <option value="Fixer">Fixer</option>
+                            @if (user.Role != "FREE")
+                            {
+                                <option value="Exchangerate">Exchange Rate</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class=" col-4 col-md-2">
+                    <div class="form-group">
+                        <label class="text-warning">From Iso</label>
+                        <select class="form-control" @bind="VM.FromIso">
+                            <option value="Select" selected disabled="disabled">(Select From)</option>
+                            @foreach (var item in Currencies)
+                            {
+                                <option value="@item.Key">@item.Value</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class=" col-4 col-md-2">
+                    <div class="form-group">
+                        <label class="text-warning">To Iso</label>
+                        <select class="form-control" @bind="VM.ToIso">
+                            <option value="Select" selected disabled="disabled">(Select From)</option>
+                            @foreach (var item in Currencies)
+                            {
+                                <option value="@item.Key">@item.Value</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class=" col-4 col-md-2">
+                    <div class="form-group">
+                        <label class="text-warning">Amount</label>
+                        <input @bind="VM.Amount" type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-8 col-md-2">
+                    <div class="form-group" style="margin-top: 1.9rem !important;">
+                        @if (IsProcessing)
+                        {
+                            <button class="btn btn-success btn-block form-control"><i class="fa fa-spin fa-spinner"></i>Processing...</button>
+                        }
+                        else
+                        {
+                            <input type="submit" value="Convert" class="btn btn-success btn-block form-control" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </EditForm>
+    <b>@convertedAmount</b>
+}
+else
+{
+    <h1>Go Login</h1>
+}
+
+@code {
+    private ConvertVM VM { get; set; } = new ConvertVM();
+    private bool IsProcessing { get; set; } = false;
+    private Dictionary<string, string> Currencies { get; set; } = new Dictionary<string, string>();
+    private bool hasUser = false;
+    private UserDTO user = new UserDTO();
+    private decimal convertedAmount = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnParametersSet();
+        if (await localStorage.GetItemAsync<UserDTO>("User Details") != null)
+        {
+            user = await localStorage.GetItemAsync<UserDTO>("User Details");
+            hasUser = true;
+            Currencies = await currencyService.GetCurrencies();
+        }
+
+
+    }
+
+    public void Dispose()
+    {
+
+    }
+
+    private async Task ConvertPost()
+    {
+        try
+        {            
+            IsProcessing = true;                     
+            convertedAmount = await currencyService.Convert(VM.FromIso, VM.ToIso, VM.Provider, user.Role, Convert.ToDecimal(VM.Amount));
+            IsProcessing = false;
+
+        }
+        catch (Exception e)
+        {
+            await _JsRuntime.ToastrError(e.Message);
+        }
+    }
+}

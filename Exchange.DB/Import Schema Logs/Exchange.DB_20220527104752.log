@@ -1,0 +1,88 @@
+27/05/2022 23:47:52	This log contains information about the import schema operation into project 'Exchange.DB' on computer 'RAZER-LAPTOP' by user 'George'.
+27/05/2022 23:47:52	Import of database schema has started.
+27/05/2022 23:47:57	Gathering database credentials
+27/05/2022 23:47:57	Gathering database options
+27/05/2022 23:47:57	Gathering generic database scoped configuration option
+27/05/2022 23:47:57	Gathering users
+27/05/2022 23:47:57	Gathering roles
+27/05/2022 23:47:57	Gathering application roles
+27/05/2022 23:47:57	Gathering role memberships
+27/05/2022 23:47:57	Gathering filegroups
+27/05/2022 23:47:57	Gathering full-text catalogs
+27/05/2022 23:47:57	Gathering assemblies
+27/05/2022 23:47:57	Gathering certificates
+27/05/2022 23:47:57	Gathering asymmetric keys
+27/05/2022 23:47:57	Gathering symmetric keys
+27/05/2022 23:47:57	Gathering encrypted symmetric keys
+27/05/2022 23:47:57	Gathering schemas
+27/05/2022 23:47:57	Gathering XML schema collections
+27/05/2022 23:47:57	Gathering user-defined data types
+27/05/2022 23:47:57	Gathering user-defined types
+27/05/2022 23:47:57	Gathering table types
+27/05/2022 23:47:57	Gathering unique keys for table types
+27/05/2022 23:47:57	Gathering primary keys for table types
+27/05/2022 23:47:57	Gathering indexes for table types
+27/05/2022 23:47:57	Gathering check constraints for table types
+27/05/2022 23:47:57	Gathering default constraints for table types
+27/05/2022 23:47:57	Gathering partition functions
+27/05/2022 23:47:57	Gathering partition schemes
+27/05/2022 23:47:57	Gathering functions
+27/05/2022 23:47:57	Gathering encrypted functions
+27/05/2022 23:47:57	Gathering aggregates
+27/05/2022 23:47:57	Gathering procedures
+27/05/2022 23:47:57	Gathering encrypted procedures
+27/05/2022 23:47:57	Gathering tables
+27/05/2022 23:47:57	Gathering primary keys
+27/05/2022 23:47:57	Gathering unique constraints
+27/05/2022 23:47:57	Gathering foreign keys
+27/05/2022 23:47:57	Gathering default constraints
+27/05/2022 23:47:57	Gathering check constraints
+27/05/2022 23:47:57	Gathering views
+27/05/2022 23:47:57	Gathering encrypted views
+27/05/2022 23:47:57	Gathering indexes
+27/05/2022 23:47:57	Gathering statistics
+27/05/2022 23:47:58	Gathering full-text index stoplists
+27/05/2022 23:47:58	Gathering search property lists
+27/05/2022 23:47:58	Gathering search properties
+27/05/2022 23:47:58	Gathering full-text indexes
+27/05/2022 23:47:58	Gathering column store indexes
+27/05/2022 23:47:58	Gathering spatial indexes
+27/05/2022 23:47:58	Gathering XML indexes
+27/05/2022 23:47:58	Gathering Selective XML indexes
+27/05/2022 23:47:58	Gathering encrypted triggers
+27/05/2022 23:47:58	Gathering triggers
+27/05/2022 23:47:58	Gathering encrypted and clr ddl triggers
+27/05/2022 23:47:58	Gathering ddl triggers
+27/05/2022 23:47:58	Creating edge constraints
+27/05/2022 23:47:58	Gathering synonyms
+27/05/2022 23:47:58	Gathering defaults
+27/05/2022 23:47:58	Gathering data constraint uddt bindings
+27/05/2022 23:47:58	Gathering rules
+27/05/2022 23:47:58	Gathering data constraint uddt bindings
+27/05/2022 23:47:58	Gathering message types
+27/05/2022 23:47:58	Gathering queues
+27/05/2022 23:47:58	Gathering contracts
+27/05/2022 23:47:58	Gathering services
+27/05/2022 23:47:58	Gathering event notifications
+27/05/2022 23:47:58	Gathering remote service bindings
+27/05/2022 23:47:58	Gathering broker priorities
+27/05/2022 23:47:58	Gathering signatures
+27/05/2022 23:47:58	Gathering data compression options
+27/05/2022 23:47:58	Gathering sequence types
+27/05/2022 23:47:58	Gathering security policies
+27/05/2022 23:47:58	Gather column encryption keys
+27/05/2022 23:47:58	Gathering column master keys
+27/05/2022 23:47:58	Gathering external data sources
+27/05/2022 23:47:58	Gathering external file formats
+27/05/2022 23:47:58	Gathering external tables
+27/05/2022 23:47:58	Gathering database permissions
+27/05/2022 23:47:58	Gathering extended properties
+27/05/2022 23:47:58	Gathering assemblies
+27/05/2022 23:47:58	Gathering credentials
+27/05/2022 23:47:58	Gathering logins
+27/05/2022 23:47:58	Gathering server audits
+27/05/2022 23:47:59	Scanning project for duplicate elements
+27/05/2022 23:47:59	Finished duplicate element processing
+27/05/2022 23:47:59	Finished importing database.
+27/05/2022 23:47:59	A summary of the import was saved to the following location: D:\Projects\MeropiTest\Netwealth\Exchange.DB\Import Schema Logs\Exchange.DB_20220527104752.log
+27/05/2022 23:47:59	Click Finish to continue...

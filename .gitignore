@@ -3,3 +3,11 @@
 ################################################################################
 
 /.vs
+/Exchange.API/bin/Debug/net6.0
+/Exchange.API.IntegrationTests/bin/Debug/net6.0
+/Exchange.API.IntegrationTests/obj
+/Exchange.API.UnitTests/bin/Debug/net6.0
+/Exchange.API.UnitTests/obj
+/Exchange.DB/bin/Debug
+/Exchange.UI/bin/Debug/net6.0
+/Exchange.UI/obj/Debug/net6.0
